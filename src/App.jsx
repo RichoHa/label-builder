@@ -1,9 +1,12 @@
 export default function App() {
-  const rectX = 45;
-  const rectY = 2.5;
+  const StartRectX = 45;
+  const StartRectY = 2.5;
   const rectWidth = 10;
   const rectHeight = 5;
   const fontSize = 3;
+
+  const holeR = 0.5;
+  const holeMargin = 1;
 
   return (
     //Create a view box of xMin = 0, yMin = 0, xMax = 100, yMax = 100.
@@ -37,8 +40,8 @@ export default function App() {
         marker-start="url(#arr)"
       />
       <rect
-        x={rectX}
-        y={rectY}
+        x={StartRectX}
+        y={StartRectY}
         width={rectWidth}
         height={rectHeight}
         fill="none"
@@ -46,13 +49,19 @@ export default function App() {
         stroke-width="0.5"
       />
       <text
-        x={rectX + 2}
-        y={rectY + rectHeight / 2 + fontSize * 0.35}
+        x={StartRectX + 2}
+        y={StartRectY + rectHeight / 2 + fontSize * 0.35}
         font-size={fontSize}
         fill="black"
       >
         Start
       </text>
+      <circle
+        cx={StartRectX + holeMargin}
+        cy={StartRectY + holeMargin}
+        r={holeR}
+        fill="black"
+      />
     </svg>
   );
 }
