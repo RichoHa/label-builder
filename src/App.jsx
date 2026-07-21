@@ -5,6 +5,7 @@ export default function App() {
   const [holeCount, setHoleCount] = useState(4);
   const [rectWidth, setRectWidth] = useState(10);
   const [rectHeight, setRectHeight] = useState(5);
+  const [bgColor, setBgColor] = useState("white");
 
   const StartRectX = 45;
   const StartRectY = 2.5;
@@ -49,6 +50,12 @@ export default function App() {
         value={rectHeight}
         onChange={(e) => setRectHeight(parseFloat(e.target.value))}
       />
+      <select value={bgColor} onChange={(e) => setBgColor(e.target.value)}>
+        <option value="white">White</option>
+        <option value="grey">Grey</option>
+        <option value="yellow">Yellow</option>
+        <option value="red">Red</option>
+      </select>
       <LabelPreview
         rectWidth={rectWidth}
         rectHeight={rectHeight}
@@ -57,6 +64,7 @@ export default function App() {
         StartRectX={StartRectX}
         StartRectY={StartRectY}
         fontSize={fontSize}
+        bgColor={bgColor}
       />
 
       <button onClick={() => setHoleCount(0)}>0 holes</button>

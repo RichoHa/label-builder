@@ -6,6 +6,7 @@ export default function LabelPreview({
   StartRectX,
   StartRectY,
   fontSize,
+  bgColor,
 }) {
   return (
     <svg viewBox="0 0 100 100">
@@ -36,7 +37,7 @@ export default function LabelPreview({
         y={StartRectY}
         width={rectWidth}
         height={rectHeight}
-        fill="none"
+        fill={bgColor}
         stroke="black"
         stroke-width="0.5"
       />
