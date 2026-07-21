@@ -8,6 +8,16 @@ export default function App() {
   const holeR = 0.5;
   const holeMargin = 1;
 
+  const holes = [
+    { cx: StartRectX + holeMargin, cy: StartRectY + holeMargin },
+    { cx: StartRectX + rectWidth - holeMargin, cy: StartRectY + holeMargin },
+    { cx: StartRectX + holeMargin, cy: StartRectY + rectHeight - holeMargin },
+    {
+      cx: StartRectX + rectWidth - holeMargin,
+      cy: StartRectY + rectHeight - holeMargin,
+    },
+  ];
+
   return (
     //Create a view box of xMin = 0, yMin = 0, xMax = 100, yMax = 100.
     <svg viewBox="0 0 100 100">
@@ -56,12 +66,9 @@ export default function App() {
       >
         Start
       </text>
-      <circle
-        cx={StartRectX + holeMargin}
-        cy={StartRectY + holeMargin}
-        r={holeR}
-        fill="black"
-      />
+      {holes.map((hole, i) => (
+        <circle key={i} cx={hole.cx} cy={hole.cy} r={holeR} fill="black" />
+      ))}
     </svg>
   );
 }
