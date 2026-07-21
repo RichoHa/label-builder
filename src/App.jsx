@@ -6,6 +6,7 @@ export default function App() {
   const [rectWidth, setRectWidth] = useState(10);
   const [rectHeight, setRectHeight] = useState(5);
   const [bgColor, setBgColor] = useState("white");
+  const [labelText1, setlabelText1] = useState("Label Text 1");
 
   const StartRectX = 45;
   const StartRectY = 2.5;
@@ -50,6 +51,11 @@ export default function App() {
         value={rectHeight}
         onChange={(e) => setRectHeight(parseFloat(e.target.value))}
       />
+      <input
+        type="text"
+        value={labelText1}
+        onChange={(e) => setlabelText1(e.target.value)}
+      />
       <select value={bgColor} onChange={(e) => setBgColor(e.target.value)}>
         <option value="white">White</option>
         <option value="grey">Grey</option>
@@ -65,6 +71,7 @@ export default function App() {
         StartRectY={StartRectY}
         fontSize={fontSize}
         bgColor={bgColor}
+        labelText1={labelText1}
       />
 
       <button onClick={() => setHoleCount(0)}>0 holes</button>
