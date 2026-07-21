@@ -4,10 +4,10 @@ import LabelPreview from "./component/LabelPreview";
 export default function App() {
   const [holeCount, setHoleCount] = useState(4);
   const [rectWidth, setRectWidth] = useState(10);
+  const [rectHeight, setRectHeight] = useState(5);
 
   const StartRectX = 45;
   const StartRectY = 2.5;
-  const rectHeight = 5;
   const fontSize = 3;
 
   const holeR = 0.5;
@@ -43,6 +43,11 @@ export default function App() {
         type="number"
         value={rectWidth}
         onChange={(e) => setRectWidth(parseFloat(e.target.value))}
+      />
+      <input
+        type="number"
+        value={rectHeight}
+        onChange={(e) => setRectHeight(parseFloat(e.target.value))}
       />
       <LabelPreview
         rectWidth={rectWidth}
