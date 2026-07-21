@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function App() {
+  const [holeCount, setHoleCount] = useState(4);
+
   const StartRectX = 45;
   const StartRectY = 2.5;
   const rectWidth = 10;
@@ -8,15 +12,29 @@ export default function App() {
   const holeR = 0.5;
   const holeMargin = 1;
 
-  const holes = [
-    { cx: StartRectX + holeMargin, cy: StartRectY + holeMargin },
-    { cx: StartRectX + rectWidth - holeMargin, cy: StartRectY + holeMargin },
-    { cx: StartRectX + holeMargin, cy: StartRectY + rectHeight - holeMargin },
-    {
-      cx: StartRectX + rectWidth - holeMargin,
-      cy: StartRectY + rectHeight - holeMargin,
-    },
-  ];
+  let holes;
+
+  if (holeCount == 4) {
+    holes = [
+      { cx: StartRectX + holeMargin, cy: StartRectY + holeMargin },
+      { cx: StartRectX + rectWidth - holeMargin, cy: StartRectY + holeMargin },
+      { cx: StartRectX + holeMargin, cy: StartRectY + rectHeight - holeMargin },
+      {
+        cx: StartRectX + rectWidth - holeMargin,
+        cy: StartRectY + rectHeight - holeMargin,
+      },
+    ];
+  } else if (holeCount == 2) {
+    holes = [
+      { cx: StartRectX + holeMargin, cy: StartRectY + rectHeight / 2 },
+      {
+        cx: StartRectX + rectWidth - holeMargin,
+        cy: StartRectY + rectHeight / 2,
+      },
+    ];
+  } else {
+    holes = [];
+  }
 
   return (
     //Create a view box of xMin = 0, yMin = 0, xMax = 100, yMax = 100.
