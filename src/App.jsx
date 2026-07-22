@@ -3,6 +3,16 @@ import LabelPreview from "./component/LabelPreview";
 import Button from "./component/Button";
 import Input from "./component/Input";
 
+function download(filename, jsonString) {
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export default function App() {
   const [holeCount, setHoleCount] = useState(4);
   const [rectWidth, setRectWidth] = useState(10);
@@ -13,6 +23,14 @@ export default function App() {
     { text: "Line2", fontSize: 2, colour: "red" },
   ]);
   const lineGap = 3;
+
+  const design = {
+    holeCount: holeCount,
+    rectWidth: rectWidth,
+    rectHeight: rectHeight,
+    bgColor: bgColor,
+    lines: lines,
+  };
 
   const StartRectX = 45;
   const StartRectY = 2.5;
@@ -80,6 +98,13 @@ export default function App() {
           <option value="yellow">Yellow</option>
           <option value="red">Red</option>
         </select>
+        <Button
+          onClick={() =>
+            download("label.json", JSON.stringify(design, null, 2))
+          }
+        >
+          Save
+        </Button>
       </div>
 
       <LabelPreview
