@@ -5,7 +5,6 @@ export default function LabelPreview({
   holeR,
   StartRectX,
   StartRectY,
-  fontSize,
   bgColor,
   lines,
   lineGap,
@@ -52,10 +51,10 @@ export default function LabelPreview({
             rectHeight / 2 -
             ((lines.length - 1) * lineGap) / 2 +
             i * lineGap +
-            fontSize * 0.35
+            line.fontSize * 0.35
           }
-          font-size={fontSize}
-          fill="black"
+          font-size={line.fontSize}
+          fill={line.colour}
         >
           {line.text}
         </text>
