@@ -57,7 +57,7 @@ export default function LabelPreview({
           font-size={fontSize}
           fill="black"
         >
-          {line}
+          {line.text}
         </text>
       ))}
       {holes.map((hole, i) => (

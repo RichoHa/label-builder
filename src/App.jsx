@@ -6,7 +6,7 @@ export default function App() {
   const [rectWidth, setRectWidth] = useState(10);
   const [rectHeight, setRectHeight] = useState(5);
   const [bgColor, setBgColor] = useState("white");
-  const [lines, setLines] = useState(["Line1", "Line2"]);
+  const [lines, setLines] = useState([{ text: "Line1" }, { text: "Line2" }]);
   const lineGap = 3;
 
   const StartRectX = 45;
@@ -45,6 +45,10 @@ export default function App() {
       <button onClick={() => setHoleCount(0)}>0 holes</button>
       <button onClick={() => setHoleCount(2)}>2 holes</button>
       <button onClick={() => setHoleCount(4)}>4 holes</button>
+      <button onClick={() => setLines([...lines, { text: "New Line" }])}>
+        Add Line
+      </button>
+      <button onClick={() => setLines(lines.slice(0, -1))}>Remove Line</button>
       <input
         type="number"
         value={rectWidth}
