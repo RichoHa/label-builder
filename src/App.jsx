@@ -2,16 +2,7 @@ import { useState } from "react";
 import LabelPreview from "./component/LabelPreview";
 import Button from "./component/Button";
 import Input from "./component/Input";
-
-function download(filename, jsonString) {
-  const blob = new Blob([jsonString], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
-}
+import { download, load } from "./utils/fileIO";
 
 export default function App() {
   const [holeCount, setHoleCount] = useState(4);
@@ -105,6 +96,19 @@ export default function App() {
         >
           Save
         </Button>
+        <input
+          type="file"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            load(file, (design) => {
+              setHoleCount(design.holeCount);
+              setRectWidth(design.rectWidth);
+              setRectHeight(design.rectHeight);
+              setBgColor(design.bgColor);
+              setLines(design.lines);
+            });
+          }}
+        />
       </div>
 
       <LabelPreview
