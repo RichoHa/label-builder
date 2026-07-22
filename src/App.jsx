@@ -1,5 +1,7 @@
 import { useState } from "react";
 import LabelPreview from "./component/LabelPreview";
+import Button from "./component/Button";
+import Input from "./component/Input";
 
 export default function App() {
   const [holeCount, setHoleCount] = useState(4);
@@ -44,37 +46,42 @@ export default function App() {
   }
 
   return (
-    <div>
-      <button onClick={() => setHoleCount(0)}>0 holes</button>
-      <button onClick={() => setHoleCount(2)}>2 holes</button>
-      <button onClick={() => setHoleCount(4)}>4 holes</button>
-      <button
-        onClick={() =>
-          setLines([
-            ...lines,
-            { text: "New Line", fontSize: 5, colour: "green" },
-          ])
-        }
-      >
-        Add Line
-      </button>
-      <button onClick={() => setLines(lines.slice(0, -1))}>Remove Line</button>
-      <input
-        type="number"
-        value={rectWidth}
-        onChange={(e) => setRectWidth(parseFloat(e.target.value))}
-      />
-      <input
-        type="number"
-        value={rectHeight}
-        onChange={(e) => setRectHeight(parseFloat(e.target.value))}
-      />
-      <select value={bgColor} onChange={(e) => setBgColor(e.target.value)}>
-        <option value="white">White</option>
-        <option value="grey">Grey</option>
-        <option value="yellow">Yellow</option>
-        <option value="red">Red</option>
-      </select>
+    <div className="flex gap-8 p-4">
+      <div className="flex flex-col gap-2">
+        <Button onClick={() => setHoleCount(0)}>0 holes</Button>
+        <Button onClick={() => setHoleCount(2)}>2 holes</Button>
+        <Button onClick={() => setHoleCount(4)}>4 holes</Button>
+        <Button
+          onClick={() =>
+            setLines([
+              ...lines,
+              { text: "New Line", fontSize: 5, colour: "green" },
+            ])
+          }
+        >
+          Add Line
+        </Button>
+        <Button onClick={() => setLines(lines.slice(0, -1))}>
+          Remove Line
+        </Button>
+        <Input
+          type="number"
+          value={rectWidth}
+          onChange={(e) => setRectWidth(parseFloat(e.target.value))}
+        />
+        <Input
+          type="number"
+          value={rectHeight}
+          onChange={(e) => setRectHeight(parseFloat(e.target.value))}
+        />
+        <select value={bgColor} onChange={(e) => setBgColor(e.target.value)}>
+          <option value="white">White</option>
+          <option value="grey">Grey</option>
+          <option value="yellow">Yellow</option>
+          <option value="red">Red</option>
+        </select>
+      </div>
+
       <LabelPreview
         rectWidth={rectWidth}
         rectHeight={rectHeight}
