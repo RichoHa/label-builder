@@ -6,7 +6,8 @@ export default function App() {
   const [rectWidth, setRectWidth] = useState(10);
   const [rectHeight, setRectHeight] = useState(5);
   const [bgColor, setBgColor] = useState("white");
-  const [labelText1, setlabelText1] = useState("Label Text 1");
+  const [lines, setLines] = useState(["Line1", "Line2"]);
+  const lineGap = 3;
 
   const StartRectX = 45;
   const StartRectY = 2.5;
@@ -41,6 +42,9 @@ export default function App() {
 
   return (
     <div>
+      <button onClick={() => setHoleCount(0)}>0 holes</button>
+      <button onClick={() => setHoleCount(2)}>2 holes</button>
+      <button onClick={() => setHoleCount(4)}>4 holes</button>
       <input
         type="number"
         value={rectWidth}
@@ -50,11 +54,6 @@ export default function App() {
         type="number"
         value={rectHeight}
         onChange={(e) => setRectHeight(parseFloat(e.target.value))}
-      />
-      <input
-        type="text"
-        value={labelText1}
-        onChange={(e) => setlabelText1(e.target.value)}
       />
       <select value={bgColor} onChange={(e) => setBgColor(e.target.value)}>
         <option value="white">White</option>
@@ -71,12 +70,9 @@ export default function App() {
         StartRectY={StartRectY}
         fontSize={fontSize}
         bgColor={bgColor}
-        labelText1={labelText1}
+        lines={lines}
+        lineGap={lineGap}
       />
-
-      <button onClick={() => setHoleCount(0)}>0 holes</button>
-      <button onClick={() => setHoleCount(2)}>2 holes</button>
-      <button onClick={() => setHoleCount(4)}>4 holes</button>
     </div>
   );
 }

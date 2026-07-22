@@ -7,7 +7,8 @@ export default function LabelPreview({
   StartRectY,
   fontSize,
   bgColor,
-  labelText1,
+  lines,
+  lineGap,
 }) {
   return (
     <svg viewBox="0 0 100 100">
@@ -42,14 +43,23 @@ export default function LabelPreview({
         stroke="black"
         stroke-width="0.5"
       />
-      <text
-        x={StartRectX + 2}
-        y={StartRectY + rectHeight / 2 + fontSize * 0.35}
-        font-size={fontSize}
-        fill="black"
-      >
-        {labelText1}
-      </text>
+      {lines.map((line, i) => (
+        <text
+          key={i}
+          x={StartRectX + 2}
+          y={
+            StartRectY +
+            rectHeight / 2 -
+            ((lines.length - 1) * lineGap) / 2 +
+            i * lineGap +
+            fontSize * 0.35
+          }
+          font-size={fontSize}
+          fill="black"
+        >
+          {line}
+        </text>
+      ))}
       {holes.map((hole, i) => (
         <circle key={i} cx={hole.cx} cy={hole.cy} r={holeR} fill="black" />
       ))}
