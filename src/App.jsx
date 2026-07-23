@@ -13,7 +13,12 @@ export default function App() {
     { text: "Line1", fontSize: 3, colour: "black" },
     { text: "Line2", fontSize: 2, colour: "red" },
   ]);
-  const lineGap = 3;
+
+  function exportSVG() {
+    const svgElement = document.querySelector("svg");
+    const svgString = new XMLSerializer().serializeToString(svgElement);
+    download("label.svg", svgString);
+  }
 
   const design = {
     holeCount: holeCount,
@@ -25,8 +30,7 @@ export default function App() {
 
   const StartRectX = 0;
   const StartRectY = 0;
-  const fontSize = 3;
-
+  const lineGap = 3;
   const holeR = 0.5;
   const holeMargin = 1;
   const strokeWidth = 0.5;
@@ -95,8 +99,9 @@ export default function App() {
             download("label.json", JSON.stringify(design, null, 2))
           }
         >
-          Save
+          Save JSON
         </Button>
+        <Button onClick={exportSVG}>Save SVG</Button>
         <input
           type="file"
           onChange={(e) => {
