@@ -23,8 +23,8 @@ export default function App() {
     lines: lines,
   };
 
-  const StartRectX = 45;
-  const StartRectY = 2.5;
+  const StartRectX = 0;
+  const StartRectY = 0;
   const fontSize = 3;
 
   const holeR = 0.5;
@@ -106,6 +106,8 @@ export default function App() {
               setRectHeight(design.rectHeight);
               setBgColor(design.bgColor);
               setLines(design.lines);
+              setRectWidth(design.rectWidth);
+              setRectHeight(design.rectHeight);
             });
           }}
         />

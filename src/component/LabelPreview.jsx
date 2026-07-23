@@ -10,7 +10,11 @@ export default function LabelPreview({
   lineGap,
 }) {
   return (
-    <svg viewBox="0 0 100 100">
+    <svg
+      viewBox={`0 0 ${rectWidth} ${rectHeight}`}
+      width={rectWidth + "mm"}
+      height={rectHeight + "mm"}
+    >
       <defs>
         <marker
           id="arr"
@@ -24,18 +28,9 @@ export default function LabelPreview({
           <path d="M 0 0 L 10 5 L 0 10 z" fill="red" />
         </marker>
       </defs>
-      <line
-        x1="10"
-        y1="10"
-        x2="90"
-        y2="10"
-        stroke="red"
-        marker-end="url(#arr)"
-        marker-start="url(#arr)"
-      />
       <rect
-        x={StartRectX}
-        y={StartRectY}
+        x={0}
+        y={0}
         width={rectWidth}
         height={rectHeight}
         fill={bgColor}
