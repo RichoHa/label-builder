@@ -29,6 +29,7 @@ export default function App() {
 
   const holeR = 0.5;
   const holeMargin = 1;
+  const strokeWidth = 0.5;
 
   let holes;
 
@@ -106,8 +107,6 @@ export default function App() {
               setRectHeight(design.rectHeight);
               setBgColor(design.bgColor);
               setLines(design.lines);
-              setRectWidth(design.rectWidth);
-              setRectHeight(design.rectHeight);
             });
           }}
         />
@@ -120,10 +119,10 @@ export default function App() {
         holeR={holeR}
         StartRectX={StartRectX}
         StartRectY={StartRectY}
-        fontSize={fontSize}
         bgColor={bgColor}
         lines={lines}
         lineGap={lineGap}
+        strokeWidth={strokeWidth}
       />
     </div>
   );

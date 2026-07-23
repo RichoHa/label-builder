@@ -8,6 +8,7 @@ export default function LabelPreview({
   bgColor,
   lines,
   lineGap,
+  strokeWidth,
 }) {
   return (
     <svg
@@ -29,13 +30,13 @@ export default function LabelPreview({
         </marker>
       </defs>
       <rect
-        x={0}
-        y={0}
-        width={rectWidth}
-        height={rectHeight}
+        x={strokeWidth / 2}
+        y={strokeWidth / 2}
+        width={rectWidth - strokeWidth}
+        height={rectHeight - strokeWidth}
         fill={bgColor}
         stroke="black"
-        stroke-width="0.5"
+        stroke-width={strokeWidth}
       />
       {lines.map((line, i) => (
         <text
