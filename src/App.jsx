@@ -20,6 +20,12 @@ export default function App() {
     download("label.svg", svgString);
   }
 
+  function updateLine(index, changes) {
+    setLines(
+      lines.map((line, i) => (i === index ? { ...line, ...changes } : line)),
+    );
+  }
+
   const design = {
     holeCount: holeCount,
     rectWidth: rectWidth,
@@ -115,6 +121,14 @@ export default function App() {
             });
           }}
         />
+        {lines.map((line, i) => (
+          <input
+            key={i}
+            type="text"
+            value={line.text}
+            onChange={(e) => updateLine(i, { text: e.target.value })}
+          />
+        ))}
       </div>
 
       <LabelPreview
